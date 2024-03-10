@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/app/components/my_button.dart';
 import 'package:furniture/app/components/my_textfield.dart';
-import 'package:furniture/app/modules/login/views/login_view.dart';
 import 'package:furniture/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
@@ -9,7 +8,9 @@ import 'package:get/get.dart';
 import '../controllers/signup_controller.dart';
 
 class SignupView extends GetView<SignupController> {
-  const SignupView({Key? key}) : super(key: key);
+  SignupView({Key? key}) : super(key: key);
+
+  final signupController = Get.put(SignupController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,9 +41,9 @@ class SignupView extends GetView<SignupController> {
                   height: 20,
                 ),
                 MyTextField(
-                  // controller: controller.nameController,
-                  hintText: 'Enter your name',
-                  labelText: 'Full Name',
+                  controller: controller.usernameController,
+                  hintText: 'Enter username',
+                  labelText: 'User name',
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Name can't be empty";
@@ -51,7 +52,7 @@ class SignupView extends GetView<SignupController> {
                   },
                 ),
                 MyTextField(
-                  // controller: controller.emailController,
+                  controller: controller.emailController,
                   hintText: 'Enter your Email',
                   labelText: 'Email',
                   validator: (value) {
@@ -64,7 +65,31 @@ class SignupView extends GetView<SignupController> {
                   },
                 ),
                 MyTextField(
-                  // controller: controller.passwordController,
+                  controller: controller.phoneController,
+                  hintText: 'Enter your Phone number',
+                  labelText: 'Phone-Number',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Phonenumber can't be empty";
+                    } else if (!GetUtils.isPhoneNumber(value)) {
+                      return "Give proper Phone number";
+                    }
+                    return null;
+                  },
+                ),
+                MyTextField(
+                  controller: controller.addressController,
+                  hintText: 'Enter your Address',
+                  labelText: 'Address',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return "Address can't be empty";
+                    }
+                    return null;
+                  },
+                ),
+                MyTextField(
+                  controller: controller.passwordController,
                   hintText: 'Enter your Password',
                   labelText: 'Password',
                   isPassword: true,
@@ -79,10 +104,7 @@ class SignupView extends GetView<SignupController> {
                   height: 20,
                 ),
                 MyButton(
-                    title: 'Register',
-                    onPressed: () {
-                      Get.to(const LoginView());
-                    }),
+                    title: 'Register', onPressed: () => controller.signUp()),
                 const SizedBox(
                   height: 20,
                 ),
@@ -98,7 +120,7 @@ class SignupView extends GetView<SignupController> {
                     GestureDetector(
                       onTap: () {
                         Get.back();
-                        // Get.toNamed(Routes.LOGIN);
+                        Get.toNamed(Routes.LOGIN);
                         // Get.offAndToNamed(Routes.LOGIN);
                       },
                       child: const Text(
