@@ -41,7 +41,7 @@ class SignupView extends GetView<SignupController> {
                   height: 20,
                 ),
                 MyTextField(
-                  controller: controller.usernameController,
+                  controller: controller.nameController,
                   hintText: 'Enter username',
                   labelText: 'User name',
                   validator: (value) {
@@ -65,7 +65,7 @@ class SignupView extends GetView<SignupController> {
                   },
                 ),
                 MyTextField(
-                  controller: controller.phoneController,
+                  controller: controller.phonenumberController,
                   hintText: 'Enter your Phone number',
                   labelText: 'Phone-Number',
                   validator: (value) {
@@ -100,6 +100,24 @@ class SignupView extends GetView<SignupController> {
                     return null;
                   },
                 ),
+                // MyDropdownField(
+                //   controller: controller.genderController,
+                //   hintText: 'Select Gender',
+                //   labelText: 'Gender',
+                //   items: ['Male', 'Female', 'Other'] // List of gender options
+                //       .map((String value) {
+                //     return DropdownMenuItem<String>(
+                //       value: value,
+                //       child: Text(value),
+                //     );
+                //   }).toList(),
+                //   validator: (value) {
+                //     if (value == null || value.isEmpty) {
+                //       return "Gender can't be empty";
+                //     }
+                //     return null;
+                //   },
+                // ),
                 const SizedBox(
                   height: 20,
                 ),
@@ -139,5 +157,35 @@ class SignupView extends GetView<SignupController> {
         ),
       ),
     ));
+  }
+}
+
+class MyDropdownField extends StatelessWidget {
+  final TextEditingController controller;
+  final String? hintText;
+  final String? labelText;
+  final List<DropdownMenuItem<String>> items;
+  final String? Function(String?)? validator;
+
+  const MyDropdownField({
+    Key? key,
+    required this.controller,
+    this.hintText,
+    this.labelText,
+    required this.items,
+    this.validator,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return DropdownButtonFormField<String>(
+      items: items,
+      decoration: InputDecoration(
+        hintText: hintText,
+        labelText: labelText,
+      ),
+      validator: validator,
+      onChanged: (_) {}, // Add an empty onChanged to avoid error
+    );
   }
 }

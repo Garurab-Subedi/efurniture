@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 const ipAddress = "https://test12.hamropahal.org";
-
 const baseUrl = ipAddress;
 // Obtain shared preferences.
 
-var getImageUrl = (imageUrl) {
-  return 'http://$ipAddress/ecom_api/$imageUrl';
+var getImageUrl = (productThumbnails) {
+  return 'http://$ipAddress/uploads/images/product/$productThumbnails';
 };
+
+// .http://127.0.0.1:8000/uploads/images/product/d604b943fb988e8daed061e2b652a5bc.png
 
 String getAvatar({required String name, Color? color}) {
   var splitName = name.split(' ');

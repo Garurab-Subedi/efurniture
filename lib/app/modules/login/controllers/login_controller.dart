@@ -25,9 +25,9 @@ class LoginController extends GetxController {
     passwordController.dispose();
   }
 
-  login() async {
+  void login() async {
     try {
-      var response = await http.post(Uri.parse('$baseUrl/api/auth/login'),
+      var response = await http.post(Uri.parse('$baseUrl/auth/login'),
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             "email": emailController.text,
@@ -37,10 +37,10 @@ class LoginController extends GetxController {
 
       if (res['status'] == 200) {
         showCustomSnackBar(message: res['message'], color: Colors.green);
+        Get.toNamed(Routes.HOME);
       } else {
         showCustomSnackBar(
             message: res['message'], color: Colors.red, isTop: true);
-        Get.toNamed(Routes.HOME);
       }
     } catch (e) {
       Get.showSnackbar(const GetSnackBar(

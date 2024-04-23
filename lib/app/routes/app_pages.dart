@@ -2,8 +2,12 @@ import 'package:get/get.dart';
 
 import '../modules/home/bindings/home_binding.dart';
 import '../modules/home/views/home_view.dart';
+import '../modules/homedetails/bindings/homedetails_binding.dart';
+import '../modules/homedetails/views/homedetails_view.dart';
 import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
+import '../modules/main/bindings/main_binding.dart';
+import '../modules/main/views/main_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
 import '../modules/signup/views/signup_view.dart';
 
@@ -48,6 +52,16 @@ class AppPages {
           binding: HomeBinding(),
         ),
       ],
+    ),
+    GetPage(
+      name: _Paths.MAIN,
+      page: () => const MainView(),
+      binding: MainBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOMEDETAILS,
+      page: () => const HomedetailsView(),
+      binding: HomedetailsBinding(),
     ),
   ];
 }

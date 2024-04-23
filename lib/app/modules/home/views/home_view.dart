@@ -10,12 +10,15 @@ import '../controllers/home_controller.dart';
 
 class HomeView extends GetView<HomeController> {
   const HomeView({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: kPrimaryColor,
       appBar: buildAppBar(),
-      body: const Body(),
+      body: Obx(
+        () => Body(products: controller.products.toList()),
+      ),
     );
   }
 

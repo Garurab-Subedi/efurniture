@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         hintColor: kPrimaryColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      initialRoute: Routes.SIGNUP,
+      initialRoute: Routes.LOGIN,
       getPages: AppPages.routes,
     );
   }

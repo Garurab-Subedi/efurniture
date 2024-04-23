@@ -1,96 +1,110 @@
-// // To parse this JSON data, do
-// //
-// //     final product = productFromJson(jsonString);
+// To parse this JSON data, do
+//
+//     final product = productFromJson(jsonString);
 
-// import 'dart:convert';
+import 'dart:convert';
 
-// List<Product> productFromJson(String str) =>
-//     List<Product>.from(json.decode(str).map((x) => Product.fromJson(x)));
+Product productFromJson(String str) => Product.fromJson(json.decode(str));
 
-// String productToJson(List<Product> data) =>
-//     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-// class Product {
-//   final String? productId;
-//   final String? title;
-//   final String? description;
-//   final String? categoryId;
-//   final String? imageUrl;
-//   final String? isAvailable;
-//   final String? price;
-//   final String? category;
-
-//   Product({
-//     this.productId,
-//     this.title,
-//     this.description,
-//     this.categoryId,
-//     this.imageUrl,
-//     this.isAvailable,
-//     this.price,
-//     this.category,
-//   });
-
-//   factory Product.fromJson(Map<String, dynamic> json) => Product(
-//         productId: json["product_id"],
-//         title: json["title"],
-//         description: json["description"],
-//         categoryId: json["category_id"],
-//         imageUrl: json["image_url"],
-//         isAvailable: json["is_available"],
-//         price: json["price"],
-//         category: json["category"],
-//       );
-
-//   Map<String, dynamic> toJson() => {
-//         "product_id": productId,
-//         "title": title,
-//         "description": description,
-//         "category_id": categoryId,
-//         "image_url": imageUrl,
-//         "is_available": isAvailable,
-//         "price": price,
-//         "category": category,
-//       };
-// }
+String productToJson(Product data) => json.encode(data.toJson());
 
 class Product {
-  final int id, price;
-  final String title, description, image;
+  final bool? status;
+  final List<Datum>? data;
+  final String? message;
 
-  Product(
-      {required this.id,
-      required this.price,
-      required this.title,
-      required this.description,
-      required this.image});
+  Product({
+    this.status,
+    this.data,
+    this.message,
+  });
+
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+        status: json["status"],
+        data: json["data"] == null
+            ? []
+            : List<Datum>.from(json["data"]!.map((x) => Datum.fromJson(x))),
+        message: json["message"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "status": status,
+        "data": data == null
+            ? []
+            : List<dynamic>.from(data!.map((x) => x.toJson())),
+        "message": message,
+      };
 }
 
-// list of products
-// for our demo
-List<Product> products = [
-  Product(
-    id: 1,
-    price: 56,
-    title: "Classic Leather Arm Chair",
-    image: "assets/images/Item_1.png",
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  ),
-  Product(
-    id: 4,
-    price: 68,
-    title: "Poppy Plastic Tub Chair",
-    image: "assets/images/Item_2.png",
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  ),
-  Product(
-    id: 9,
-    price: 39,
-    title: "Bar Stool Chair",
-    image: "assets/images/Item_3.png",
-    description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim",
-  ),
-];
+class Datum {
+  final int? productId;
+  final String? productName;
+  final String? productCode;
+  final String? productTags;
+  final String? productColors;
+  final String? productShortDescription;
+  final dynamic productLongDescription;
+  final String? productSlug;
+  final String? productPrice;
+  late final String? productThumbnail; // Updated to String for URL
+  final String? productStatus;
+  final String? subCategoryId;
+  final String? brandId;
+  final String? vendorId;
+  final String? productQuantity;
+
+  Datum({
+    this.productId,
+    this.productName,
+    this.productCode,
+    this.productTags,
+    this.productColors,
+    this.productShortDescription,
+    this.productLongDescription,
+    this.productSlug,
+    this.productPrice,
+    this.productThumbnail, // Updated to include product thumbnail URL
+    this.productStatus,
+    this.subCategoryId,
+    this.brandId,
+    this.vendorId,
+    this.productQuantity,
+  });
+
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        productId: json["product_id"],
+        productName: json["product_name"],
+        productCode: json["product_code"],
+        productTags: json["product_tags"],
+        productColors: json["product_colors"],
+        productShortDescription: json["product_short_description"],
+        productLongDescription: json["product_long_description"],
+        productSlug: json["product_slug"],
+        productPrice: json["product_price"],
+        productThumbnail:
+            "https://example.com/images/products/${json["product_id"]}.jpg", // Construct URL here
+        productStatus: json["product_status"],
+        subCategoryId: json["sub_category_id"],
+        brandId: json["brand_id"],
+        vendorId: json["vendor_id"],
+        productQuantity: json["product_quantity"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "product_id": productId,
+        "product_name": productName,
+        "product_code": productCode,
+        "product_tags": productTags,
+        "product_colors": productColors,
+        "product_short_description": productShortDescription,
+        "product_long_description": productLongDescription,
+        "product_slug": productSlug,
+        "product_price": productPrice,
+        "product_thumbnail": productThumbnail,
+        "product_status": productStatus,
+        "sub_category_id": subCategoryId,
+        "brand_id": brandId,
+        "vendor_id": vendorId,
+        "product_quantity": productQuantity,
+      };
+}

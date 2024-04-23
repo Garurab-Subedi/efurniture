@@ -87,11 +87,7 @@ class LoginView extends GetView<LoginController> {
                 const SizedBox(
                   height: 20,
                 ),
-                MyButton(
-                    title: 'Login',
-                    onPressed: () {
-                      Get.toNamed(Routes.HOME);
-                    }),
+                MyButton(title: 'Login', onPressed: () => controller.login()),
                 const SizedBox(
                   height: 20,
                 ),
