@@ -19,11 +19,6 @@ class HomeController extends GetxController {
       if (response.statusCode == 200) {
         final List<Datum> fetchedProducts =
             productFromJson(response.body).data!;
-        for (var product in fetchedProducts) {
-          // Construct the product thumbnail URL
-          product.productThumbnail =
-              "https://example.com/images/products/${product.productId}.jpg";
-        }
         products.assignAll(fetchedProducts);
       } else {
         throw Exception('Failed to load products');

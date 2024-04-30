@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:furniture/app/components/my_button.dart';
 import 'package:furniture/app/components/my_textfield.dart';
+
 import 'package:furniture/app/routes/app_pages.dart';
 
 import 'package:get/get.dart';
@@ -58,7 +59,7 @@ class LoginView extends GetView<LoginController> {
                   height: 20,
                 ),
                 MyTextField(
-                  // controller: controller.emailController,
+                  controller: controller.emailController,
                   hintText: 'Enter your Email',
                   labelText: 'Email',
                   validator: (value) {
@@ -73,7 +74,7 @@ class LoginView extends GetView<LoginController> {
                 MyTextField(
                   hintText: 'Enter your Password',
                   labelText: 'Password',
-                  // controller: controller.passwordController,
+                  controller: controller.passwordController,
                   isPassword: true,
                   validator: (value) {
                     if (value!.isEmpty) {

@@ -20,7 +20,6 @@ class LoginController extends GetxController {
   @override
   void onClose() {
     super.onClose();
-
     emailController.dispose();
     passwordController.dispose();
   }
@@ -35,9 +34,10 @@ class LoginController extends GetxController {
           }));
       var res = await json.decode(response.body);
 
-      if (res['status'] == 200) {
-        showCustomSnackBar(message: res['message'], color: Colors.green);
-        Get.toNamed(Routes.HOME);
+      if (res['status'] == true) {
+        showCustomSnackBar(
+            message: res['message'], color: Colors.green, isTop: true);
+        Get.toNamed(Routes.MAIN);
       } else {
         showCustomSnackBar(
             message: res['message'], color: Colors.red, isTop: true);

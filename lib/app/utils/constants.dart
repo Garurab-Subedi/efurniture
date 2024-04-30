@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-const ipAddress = "https://test12.hamropahal.org";
+const ipAddress = "https://test12.hamropahal.org/api";
+
 const baseUrl = ipAddress;
 // Obtain shared preferences.
 
-var getImageUrl = (productThumbnails) {
-  return 'http://$ipAddress/uploads/images/product/$productThumbnails';
+var getImageUrl = (productThumbnail) {
+  return 'https://test12.hamropahal.org/uploads/images/product/$productThumbnail';
 };
 
 // .http://127.0.0.1:8000/uploads/images/product/d604b943fb988e8daed061e2b652a5bc.png

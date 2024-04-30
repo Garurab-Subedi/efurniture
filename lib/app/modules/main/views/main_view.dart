@@ -1,5 +1,6 @@
 import 'package:floating_bottom_navigation_bar/floating_bottom_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:furniture/app/utils/constants.dart';
 
 import 'package:get/get.dart';
 
@@ -13,8 +14,8 @@ class MainView extends GetView<MainController> {
       () => Scaffold(
         body: controller.screens[controller.currentIndex.value],
         bottomNavigationBar: FloatingNavbar(
-          backgroundColor: Colors.deepPurpleAccent[700],
-          selectedItemColor: Colors.deepPurpleAccent,
+          backgroundColor: kPrimaryColor,
+          selectedItemColor: kPrimaryColor,
           onTap: (int val) {
             controller.currentIndex.value = val;
           },

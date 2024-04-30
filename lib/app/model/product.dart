@@ -46,7 +46,7 @@ class Datum {
   final dynamic productLongDescription;
   final String? productSlug;
   final String? productPrice;
-  late final String? productThumbnail; // Updated to String for URL
+  final String? productThumbnail; // Updated to String for URL
   final String? productStatus;
   final String? subCategoryId;
   final String? brandId;
@@ -81,8 +81,7 @@ class Datum {
         productLongDescription: json["product_long_description"],
         productSlug: json["product_slug"],
         productPrice: json["product_price"],
-        productThumbnail:
-            "https://example.com/images/products/${json["product_id"]}.jpg", // Construct URL here
+        productThumbnail: json["product_thumbnail"], // Construct URL here
         productStatus: json["product_status"],
         subCategoryId: json["sub_category_id"],
         brandId: json["brand_id"],
