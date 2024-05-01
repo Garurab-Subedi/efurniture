@@ -3,7 +3,9 @@ import 'package:furniture/app/model/product.dart';
 import 'package:furniture/app/modules/home/components/category_list.dart';
 import 'package:furniture/app/modules/home/components/product_card.dart';
 import 'package:furniture/app/modules/home/components/search_box.dart';
+import 'package:furniture/app/modules/homedetails/views/homedetails_view.dart';
 import 'package:furniture/app/utils/constants.dart';
+import 'package:get/get.dart';
 
 class Body extends StatelessWidget {
   final List<Datum> products;
@@ -43,6 +45,7 @@ class Body extends StatelessWidget {
                     //     ),
                     //   ),
                     // );
+                    Get.to(() => const HomedetailsView());
                   },
                 ),
               )
