@@ -28,7 +28,7 @@ class HomeView extends GetView<HomeController> {
       backgroundColor: kPrimaryColor,
       elevation: 0,
       centerTitle: false,
-      title: const Text('Dashboard'),
+      title: const Text('E-sewa Furniture'),
       actions: <Widget>[
         IconButton(
           icon: SvgPicture.asset("assets/icons/notification.svg"),

@@ -25,7 +25,7 @@ class LoginView extends GetView<LoginController> {
                 const Column(
                   children: [
                     Text(
-                      "E-furniture",
+                      "Sewa-furniture",
                       style: TextStyle(
                         fontSize: 40,
                         fontWeight: FontWeight.bold,
@@ -85,8 +85,13 @@ class LoginView extends GetView<LoginController> {
                     return null;
                   },
                 ),
+                GestureDetector(
+                    onTap: () {
+                      Get.toNamed(Routes.FORGETPASSWORD);
+                    },
+                    child: const Text('Forget password')),
                 const SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 MyButton(title: 'Login', onPressed: () => controller.login()),
                 const SizedBox(

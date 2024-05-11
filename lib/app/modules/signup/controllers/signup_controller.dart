@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:furniture/app/routes/app_pages.dart';
 import 'package:furniture/app/utils/constants.dart';
+import 'package:furniture/app/utils/memory_management.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -49,6 +50,7 @@ class SignupController extends GetxController {
 
       var res = await jsonDecode(response.body);
       if (res['status'] == 200) {
+        // MemoryManagement.setAccessToken(res['token']);
         showCustomSnackBar(
             message: res['message'], color: Colors.green, isTop: true);
         Get.toNamed(Routes.LOGIN);

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:furniture/app/routes/app_pages.dart';
 import 'package:furniture/app/utils/constants.dart';
+import 'package:furniture/app/utils/memory_management.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -35,6 +36,8 @@ class LoginController extends GetxController {
       var res = await json.decode(response.body);
 
       if (res['status'] == true) {
+        
+        
         showCustomSnackBar(
             message: res['message'], color: Colors.green, isTop: true);
         Get.toNamed(Routes.MAIN);

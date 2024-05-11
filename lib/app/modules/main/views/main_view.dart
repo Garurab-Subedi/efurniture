@@ -22,7 +22,7 @@ class MainView extends GetView<MainController> {
           currentIndex: controller.currentIndex.value,
           items: [
             FloatingNavbarItem(icon: Icons.home, title: 'Home'),
-            FloatingNavbarItem(icon: Icons.list, title: 'Wishlist'),
+            // FloatingNavbarItem(icon: Icons.list, title: 'Wishlist'),
             FloatingNavbarItem(icon: Icons.shopping_cart, title: 'Cart'),
             FloatingNavbarItem(icon: Icons.person, title: 'Profile'),
           ],

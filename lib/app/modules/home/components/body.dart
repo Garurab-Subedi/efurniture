@@ -45,7 +45,8 @@ class Body extends StatelessWidget {
                     //     ),
                     //   ),
                     // );
-                    Get.to(() => const HomedetailsView());
+
+                    Get.to(() => HomedetailsView(products[index]));
                   },
                 ),
               )
