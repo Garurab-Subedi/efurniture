@@ -12,6 +12,10 @@ import '../modules/login/bindings/login_binding.dart';
 import '../modules/login/views/login_view.dart';
 import '../modules/main/bindings/main_binding.dart';
 import '../modules/main/views/main_view.dart';
+import '../modules/orderdetails/bindings/orderdetails_binding.dart';
+import '../modules/orderdetails/views/orderdetails_view.dart';
+import '../modules/profile/bindings/profile_binding.dart';
+import '../modules/profile/views/profile_view.dart';
 import '../modules/shipping/bindings/shipping_binding.dart';
 import '../modules/shipping/views/shipping_view.dart';
 import '../modules/signup/bindings/signup_binding.dart';
@@ -81,8 +85,19 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.SHIPPING,
-      page: () => const ShippingView(),
+
+      page: () => const ShippingView(), //
       binding: ShippingBinding(),
+    ),
+    GetPage(
+      name: _Paths.PROFILE,
+      page: () => const ProfileView(),
+      binding: ProfileBinding(),
+    ),
+    GetPage(
+      name: _Paths.ORDERDETAILS,
+      page: () => const OrderdetailsView(),
+      binding: OrderdetailsBinding(),
     ),
   ];
 }

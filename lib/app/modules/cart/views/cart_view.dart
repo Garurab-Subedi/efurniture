@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:furniture/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 import '../controllers/cart_controller.dart';
 import 'package:furniture/app/utils/constants.dart';
@@ -108,6 +109,7 @@ class CartView extends StatelessWidget {
                       ElevatedButton(
                         onPressed: () {
                           // Implement checkout functionality
+                          Get.toNamed(Routes.SHIPPING);
                         },
                         child: const Text('Checkout'),
                       ),

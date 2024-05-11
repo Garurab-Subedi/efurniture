@@ -1,4 +1,8 @@
+import 'package:furniture/app/modules/shipping/controllers/shipping_controller.dart';
+import 'package:furniture/app/routes/app_pages.dart';
+
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class CartController extends GetxController {
   RxList<Map<String, dynamic>> cartItems = <Map<String, dynamic>>[].obs;
@@ -61,4 +65,6 @@ class CartController extends GetxController {
       updateTotalItems();
     }
   }
+
+  
 }

@@ -31,7 +31,8 @@ class LoginController extends GetxController {
           headers: {'Content-Type': 'application/json'},
           body: jsonEncode({
             "email": emailController.text,
-            "password": passwordController.text
+            "password": passwordController.text,
+            
           }));
       var res = await json.decode(response.body);
 
